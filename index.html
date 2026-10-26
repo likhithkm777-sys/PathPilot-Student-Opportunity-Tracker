@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A student dashboard to organize internships, hackathons, courses, and other career opportunities.">
+  <title>PathPilot — Student Opportunity Tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top"><span class="brand-mark">P</span><span>pathpilot<small>STUDENT WORKSPACE</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active" href="#dashboard"><span>▦</span> Dashboard</a>
+      <a class="nav-item" href="#opportunities"><span>◈</span> Opportunities</a>
+      <a class="nav-item" href="#add-panel"><span>＋</span> Add opportunity</a>
+      <div class="sidebar-note"><div class="note-icon">✦</div><strong>Small steps add up.</strong><p>Keep every application in one place and make your next move with confidence.</p></div>
+      <div class="profile"><div class="avatar">S</div><div><strong>Student workspace</strong><small>Personal dashboard</small></div></div>
+    </aside>
+    <main id="top" class="main-content">
+      <header class="topbar"><div><span class="eyebrow">YOUR CAREER, ORGANIZED</span><h1>Opportunity dashboard</h1><p class="muted">Track what you find. Remember what matters. Follow through.</p></div><button class="primary-btn" id="jump-add">＋ Add opportunity</button></header>
+      <section id="dashboard" class="stats-grid" aria-label="Opportunity statistics">
+        <article class="stat-card"><div class="stat-top"><span>Total opportunities</span><span class="stat-icon purple">◈</span></div><div class="stat-value" id="total-count">0</div><div class="stat-foot">Across all categories</div></article>
+        <article class="stat-card"><div class="stat-top"><span>In progress</span><span class="stat-icon amber">◷</span></div><div class="stat-value" id="progress-count">0</div><div class="stat-foot">Saved or applied</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Interviews</span><span class="stat-icon blue">✧</span></div><div class="stat-value" id="interview-count">0</div><div class="stat-foot">Next steps to prepare for</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Offers</span><span class="stat-icon green">✓</span></div><div class="stat-value" id="offer-count">0</div><div class="stat-foot">Wins worth celebrating</div></article>
+      </section>
+      <section class="content-grid">
+        <section id="opportunities" class="panel opportunities-panel">
+          <div class="panel-heading"><div><h2>My opportunities</h2><p class="muted">A clear view of what you’re working toward.</p></div><span class="count-pill" id="visible-count">0 items</span></div>
+          <div class="toolbar"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Search title, company, or notes…" aria-label="Search opportunities"></label><select id="status-filter" aria-label="Filter by status"><option value="all">All statuses</option><option>Interested</option><option>Applied</option><option>Interview</option><option>Offer</option><option>Rejected</option></select><select id="category-filter" aria-label="Filter by category"><option value="all">All categories</option><option>Internship</option><option>Job</option><option>Hackathon</option><option>Course</option><option>Scholarship</option><option>Other</option></select></div>
+          <div id="opportunity-list" class="opportunity-list" aria-live="polite"></div>
+          <div id="empty-state" class="empty-state" hidden><div class="empty-icon">⌕</div><h3>No matching opportunities</h3><p>Try changing the search or filters, or add a new opportunity.</p><button class="secondary-btn" id="clear-filters">Clear filters</button></div>
+        </section>
+        <aside id="add-panel" class="panel form-panel"><div class="panel-heading"><div><h2>Add an opportunity</h2><p class="muted">Capture the details while they’re fresh.</p></div></div>
+          <form id="opportunity-form">
+            <label>Opportunity title <span>*</span><input name="title" required maxlength="90" placeholder="e.g. Software Engineering Intern"></label>
+            <div class="form-row"><label>Company / organizer <span>*</span><input name="company" required maxlength="80" placeholder="e.g. Acme Labs"></label><label>Category<select name="category"><option>Internship</option><option>Job</option><option>Hackathon</option><option>Course</option><option>Scholarship</option><option>Other</option></select></label></div>
+            <div class="form-row"><label>Status<select name="status"><option>Interested</option><option>Applied</option><option>Interview</option><option>Offer</option><option>Rejected</option></select></label><label>Deadline / date<input name="deadline" type="date"></label></div>
+            <label>Link <input name="url" type="url" placeholder="https://…"></label>
+            <label>Notes <textarea name="notes" rows="3" maxlength="500" placeholder="Requirements, next step, contact, etc."></textarea></label>
+            <button class="primary-btn full-width" type="submit">Save opportunity <span>→</span></button>
+            <p class="form-hint">Your demo data stays in this browser on this device.</p>
+          </form>
+        </aside>
+      </section>
+      <footer class="footer"><span>PathPilot · Student Opportunity Tracker</span><button id="reset-demo" class="text-btn">Restore sample data</button></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body></html>
